@@ -14,5 +14,6 @@ popd
 
 if test -z "$NOCONFIGURE"; then
     $srcdir/configure --enable-maintainer-mode --enable-examples-build \
-	--enable-x11-examples-build --enable-debug-log $*
+	--enable-x11-examples-build $*
+	#--enable-x11-examples-build --enable-debug-log $*
 fi
