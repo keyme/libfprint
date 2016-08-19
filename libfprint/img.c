@@ -233,7 +233,7 @@ API_EXPORTED void fp_img_standardize(struct fp_img *img)
 }
 
 /* Based on write_minutiae_XYTQ and bz_load */
-static void minutiae_to_xyt(struct fp_minutiae *minutiae, int bwidth,
+API_EXPORTED void minutiae_to_xyt(struct fp_minutiae *minutiae, int bwidth,
 	int bheight, unsigned char *buf)
 {
 	int i;
