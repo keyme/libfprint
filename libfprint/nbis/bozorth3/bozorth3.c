@@ -439,6 +439,10 @@ for ( k = 1; k < probe_ptrlist_len; k++ ) {
 
 
 
+        /* Skip any pair with an angle differing by more than 11 degrees.
+         * We check this by looking for angles that differ by more than 11 and
+         * less than 349 degrees (though first we square everything so all
+         * numbers are non-negative). */
 		for ( i = 1; i < 3; i++ ) {
 			float dz_squared;
 
@@ -449,11 +453,13 @@ for ( k = 1; k < probe_ptrlist_len; k++ ) {
 
 
 			if ( dz_squared > TXS && dz_squared < CTXS )
+                /* break out of this tiny for loop so we can continue in the 
+                 * big one. */
 				break;
 		}
 
 		if ( i < 3 )
-			continue;
+			continue;  /* Done checking the angles */
 
 
 
@@ -461,7 +467,7 @@ for ( k = 1; k < probe_ptrlist_len; k++ ) {
 
 
 		if ( *(ss+5) >= 220 ) {
-			p1 = *(ss+5) - 580;
+			p1 = *(ss+5) - 580;  /* TODO: What are these constants!? */
 			n  = 1;
 		} else {
 			p1 = *(ss+5);
